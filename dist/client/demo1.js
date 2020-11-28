@@ -25,16 +25,22 @@ const floor = new THREE.Mesh(planeGeometry, new THREE.MeshBasicMaterial({
 floor.rotateX(-Math.PI / 2);
 scene.add(floor);
 const buttonVR = new ButtonVR(scene, camera);
-buttonVR.addEventListener("pressedStart", (intersection) => { console.log("pressedStart"); });
+buttonVR.addEventListener("pressedStart", (intersection) => {
+    console.log("pressedStart");
+});
 buttonVR.addEventListener("pressed", (intersection) => {
     console.log("pressed");
-    //statsVR.setCustom1(intersection.point.x.toString())
+    statsVR.setCustom1(intersection.object.name);
 });
-buttonVR.addEventListener("pressedEnd", () => { console.log("pressedEnd"); });
+buttonVR.addEventListener("pressedEnd", () => {
+    console.log("pressedEnd");
+    statsVR.setCustom1("");
+});
 const box = new THREE.Mesh(new THREE.BoxBufferGeometry(1, 1, 1), new THREE.MeshBasicMaterial({
     color: 0xff0066,
     wireframe: true
 }));
+box.name = "box";
 box.position.set(-2, .5, -4);
 scene.add(box);
 buttonVR.buttons.push(box);
@@ -42,6 +48,7 @@ const sphere = new THREE.Mesh(new THREE.SphereBufferGeometry(.5, 8, 8), new THRE
     color: 0x00ff66,
     wireframe: true
 }));
+sphere.name = "sphere";
 sphere.position.set(0, .5, -4);
 scene.add(sphere);
 buttonVR.buttons.push(sphere);
@@ -49,6 +56,7 @@ const pyramid = new THREE.Mesh(new THREE.ConeBufferGeometry(.66, 1, 4), new THRE
     color: 0xffff00,
     wireframe: true
 }));
+pyramid.name = "pyramid";
 pyramid.position.set(2, .5, -4);
 scene.add(pyramid);
 buttonVR.buttons.push(pyramid);

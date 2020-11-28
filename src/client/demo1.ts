@@ -35,12 +35,17 @@ scene.add(floor)
 
 
 const buttonVR = new ButtonVR(scene, camera)
-buttonVR.addEventListener("pressedStart", (intersection: THREE.Intersection) => { console.log("pressedStart") })
-buttonVR.addEventListener("pressed", (intersection: THREE.Intersection) => { 
-    console.log("pressed")
-    //statsVR.setCustom1(intersection.point.x.toString())
+buttonVR.addEventListener("pressedStart", (intersection: THREE.Intersection) => {
+    console.log("pressedStart")
 })
-buttonVR.addEventListener("pressedEnd", () => { console.log("pressedEnd") })
+buttonVR.addEventListener("pressed", (intersection: THREE.Intersection) => {
+    console.log("pressed")
+    statsVR.setCustom1(intersection.object.name)
+})
+buttonVR.addEventListener("pressedEnd", () => {
+    console.log("pressedEnd")
+    statsVR.setCustom1("")
+})
 
 const box = new THREE.Mesh(
     new THREE.BoxBufferGeometry(1, 1, 1),
@@ -49,6 +54,7 @@ const box = new THREE.Mesh(
         wireframe: true
     })
 )
+box.name = "box"
 box.position.set(-2, .5, -4)
 scene.add(box)
 buttonVR.buttons.push(box)
@@ -60,6 +66,7 @@ const sphere = new THREE.Mesh(
         wireframe: true
     })
 )
+sphere.name = "sphere"
 sphere.position.set(0, .5, -4)
 scene.add(sphere)
 buttonVR.buttons.push(sphere)
@@ -71,6 +78,7 @@ const pyramid = new THREE.Mesh(
         wireframe: true
     })
 )
+pyramid.name = "pyramid"
 pyramid.position.set(2, .5, -4)
 scene.add(pyramid)
 buttonVR.buttons.push(pyramid)
