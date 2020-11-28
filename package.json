@@ -1,8 +1,8 @@
 {
   "name": "buttonvr",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A minimal button for use in VR. Triggered just by looking at it.",
-  "main": "index.js",
+  "main": "./dist/client/buttonvr.js",
   "scripts": {
     "dev": "concurrently -k \"tsc -p ./src/server -w\" \"tsc -p ./src/client -w\" \"nodemon ./dist/server/server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
