@@ -15,6 +15,7 @@ class App {
         app.use('/build/three.module.js', express_1.default.static(path_1.default.join(__dirname, '../../node_modules/three/build/three.module.js')));
         app.use('/jsm/webxr/VRButton', express_1.default.static(path_1.default.join(__dirname, '../../node_modules/three/examples/jsm/webxr/VRButton.js')));
         app.use('/statsvr', express_1.default.static(path_1.default.join(__dirname, '../../node_modules/statsvr/dist/client/statsvr.js')));
+        app.use('/fonts', express_1.default.static(path_1.default.join(__dirname, '../../node_modules/three/examples/fonts')));
         this.server = new http_1.default.Server(app);
     }
     Start() {

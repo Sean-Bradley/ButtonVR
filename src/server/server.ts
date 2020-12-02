@@ -16,6 +16,8 @@ class App {
         app.use('/jsm/webxr/VRButton', express.static(path.join(__dirname, '../../node_modules/three/examples/jsm/webxr/VRButton.js')))
         app.use('/statsvr', express.static(path.join(__dirname, '../../node_modules/statsvr/dist/client/statsvr.js')))
         
+        app.use('/fonts', express.static(path.join(__dirname, '../../node_modules/three/examples/fonts')))
+        
         this.server = new http.Server(app);
     }
 
