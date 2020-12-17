@@ -13,6 +13,7 @@
             "/cannon/cannon.min": ["../typings/cannon"]
         },
         "moduleResolution": "node",
+        "declaration": true,
         "strict": true
     },
     "include": [
