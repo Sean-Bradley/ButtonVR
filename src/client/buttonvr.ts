@@ -1,5 +1,6 @@
 //MIT License
 //Copyright (c) 2020 Sean Bradley https://sbcode.net
+//https://github.com/Sean-Bradley/ButtonVR/blob/master/LICENSE
 
 import * as THREE from '/build/three.module.js'
 //import * as THREE from 'three'  //if using a bundler
