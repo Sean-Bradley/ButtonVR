@@ -2,7 +2,7 @@
 //Copyright (c) 2020 Sean Bradley https://sbcode.net
 
 import * as THREE from '/build/three.module.js'
-//declare let THREE: any
+//import * as THREE from 'three'  //if using a bundler
 
 export default class ButtonVR {
 

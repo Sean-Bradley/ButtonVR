@@ -27,7 +27,7 @@ import ButtonVR from 'buttonvr'
 ```
 
 > Note
-Depending on how you reference Threejs in your project, you may need to update the **import** reference in your version of the imported `buttonvr.js`. By default it is set to ```import * as THREE from '/build/three.module.js'```. You may reference Threejs in your main project differently.
+If using a bundler, you will need to update the **import** reference in your copy of `buttonvr.js`. By default it is set to ```import * as THREE from '/build/three.module.js'```. Try setting it to ```import * as THREE from 'three'```
 
 ## Instantiate And Use
 
