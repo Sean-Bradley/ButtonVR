@@ -24,7 +24,7 @@ const floor = new THREE.Mesh(planeGeometry, new THREE.MeshBasicMaterial({
 }));
 floor.rotateX(-Math.PI / 2);
 scene.add(floor);
-const buttonVR = new ButtonVR(scene, camera);
+const buttonVR = new ButtonVR(scene, camera, 500);
 buttonVR.addEventListener("pressedStart", (intersection) => {
     //console.log("pressedStart")
 });

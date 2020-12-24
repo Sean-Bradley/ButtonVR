@@ -15,7 +15,8 @@ export default class ButtonVR {
     private _clock;
     private _buttonPressStarted;
     private _buttonPressed;
-    constructor(scene: THREE.Scene, camera: THREE.Camera);
+    private _duration;
+    constructor(scene: THREE.Scene, camera: THREE.Camera, durationMS?: number);
     get buttons(): THREE.Object3D[];
     set buttons(value: THREE.Object3D[]);
     update(renderer: THREE.WebGLRenderer): void;

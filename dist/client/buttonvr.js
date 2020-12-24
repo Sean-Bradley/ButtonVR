@@ -1,6 +1,9 @@
+//MIT License
+//Copyright (c) 2020 Sean Bradley https://sbcode.net
 import * as THREE from '/build/three.module.js';
+//declare let THREE: any
 export default class ButtonVR {
-    constructor(scene, camera) {
+    constructor(scene, camera, durationMS) {
         this._buttons = new Array();
         this._raycaster = new THREE.Raycaster();
         this._cameraWorldQuaternion = new THREE.Quaternion();
@@ -11,8 +14,12 @@ export default class ButtonVR {
         this._clock = new THREE.Clock();
         this._buttonPressStarted = false;
         this._buttonPressed = false;
+        this._duration = 1.0;
         this._camera = camera;
         scene.add(camera);
+        if (durationMS) {
+            this._duration = durationMS / 1000;
+        }
         const lineGeometry1 = new THREE.Geometry();
         lineGeometry1.vertices.push(new THREE.Vector3(-0.1, 0, 0));
         lineGeometry1.vertices.push(new THREE.Vector3(0.1, 0, 0));
@@ -61,12 +68,12 @@ export default class ButtonVR {
                 this._timer += this._delta;
                 this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
                 this._ctx.strokeStyle = 'rgba(255, 255, 255, 1)';
-                const y = Math.floor(this._timer * 100);
+                const y = Math.floor(this._timer * 100 / this._duration);
                 this._ctx.beginPath();
                 this._ctx.moveTo(0, 0);
                 this._ctx.lineTo(y, 0);
                 this._ctx.stroke();
-                if (!this._buttonPressed && this._timer > 1.0) { //1 = 1 second
+                if (!this._buttonPressed && this._timer > this._duration) { //1 = 1 second
                     this.dispatchEvent("pressed", intersects[0]);
                     this._buttonPressed = true;
                 }
