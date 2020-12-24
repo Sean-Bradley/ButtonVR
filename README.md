@@ -23,18 +23,24 @@ To edit this example, then modify the files in `./src/client/` or `./src/server/
 
 The projects will auto recompile if you started it by using *npm run dev*
 
-or
+##  How to import ButtonVR
 
-You can simply just import the generated `./dist/client/buttonvr.js` directly into your own project as a module.
+You can import the generated `./dist/client/buttonvr.js` directly into your own project as a module.
 
 ```javascript
 <script type="module" src="./buttonvr.js"></script>
 ```
 
-or as ES6 import
+or as relative ES6 import
 
 ```javascript
 import GrabVR from './buttonvr.js'
+```
+
+or if using a bundler such as webpack or rollup
+
+```javascript
+import ButtonVR from 'buttonvr'
 ```
 
 ## Example 1
