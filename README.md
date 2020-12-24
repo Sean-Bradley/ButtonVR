@@ -6,6 +6,18 @@ Triggered just by looking at it.
 
 It uses 3D objects as buttons.
 
+You can download the project and view the examples.
+
+``` bash
+git clone https://github.com/Sean-Bradley/ButtonVR.git
+cd ButtonVR
+npm install
+npm run dev
+```
+
+Visit http://127.0.0.1:3000/
+
+
 ## How to import ButtonVR
 
 You can copy the generated `./dist/client/buttonvr.js` directly into your own project folder and import as a module.
@@ -92,24 +104,9 @@ buttonVR.addEventListener("pressedEnd", () => {
 })
 ```
 
-## ButtonVR Source Project
 
-You can download the project and view the examples.
 
-``` bash
-git clone https://github.com/Sean-Bradley/ButtonVR.git
-cd ButtonVR
-npm install
-npm run dev
-```
 
-Visit http://127.0.0.1:3000/
-
-This is a TypeScript project consisting of two sub projects with there own *tsconfigs*.
-
-To edit this example, then modify the files in `./src/client/` or `./src/server/`
-
-The projects will auto recompile if you started it by using *npm run dev*
 
 ## Example 1
 
@@ -122,3 +119,22 @@ Basic ButtonVR demo.
 Basic ButtonVR demo 2.
 
 [![ButtonVR Example 2](./dist/client/img/buttonvr-2.gif)](https://sbcode.net/threejs/buttonvr-2/)
+
+## ButtonVR Source Project
+
+This is a TypeScript project consisting of two sub projects with there own *tsconfigs*.
+
+To edit this example, then modify the files in `./src/client/` or `./src/server/`
+
+The projects will auto recompile if you started it by using *npm run dev*
+
+## Threejs TypeScript Course
+
+Visit https://github.com/Sean-Bradley/Three.js-TypeScript-Boilerplate for a Threejs TypeScript boilerplate containing many extra branches that demonstrate many examples of Threejs.
+
+> To help support this Threejs example, please take a moment to look at my official Threejs TypeScript course at 
+
+[![Threejs TypeScript Course](threejs-course-image.png)](https://www.udemy.com/course/threejs-tutorials/?referralCode=4C7E1DE91C3E42F69D0F)
+
+  [Three.js and TypeScript](https://www.udemy.com/course/threejs-tutorials/?referralCode=4C7E1DE91C3E42F69D0F)<br/>  
+  Discount Coupons for all my courses can be found at [https://sbcode.net/coupons](https://sbcode.net/coupons)
