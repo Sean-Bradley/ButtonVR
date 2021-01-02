@@ -12,7 +12,7 @@ export default class ButtonVR {
     private _texture: THREE.Texture
     private _buttons: THREE.Object3D[] = new Array();
     private _raycaster = new THREE.Raycaster()
-    private _cameraWorldQuaternion = new THREE.Quaternion()
+    //private _cameraWorldQuaternion = new THREE.Quaternion()
     private _lookAtVector = new THREE.Vector3(0, 0, -1)
     private _camera: THREE.Camera
     private _eventListeners: any[] = new Array()
@@ -26,7 +26,9 @@ export default class ButtonVR {
 
     constructor(scene: THREE.Scene, camera: THREE.Camera, durationMS?: number) {
         this._camera = camera
-        scene.add(camera)
+        if (this._camera.parent === null) {
+            scene.add(camera)
+        }
 
         if (durationMS) {
             this._duration = durationMS / 1000
@@ -70,9 +72,9 @@ export default class ButtonVR {
     public update(renderer: THREE.WebGLRenderer) {
         if (renderer.xr.isPresenting) {
             let xrCamera = renderer.xr.getCamera(this._camera);
-            xrCamera.getWorldQuaternion(this._cameraWorldQuaternion);
+            //xrCamera.getWorldQuaternion(this._cameraWorldQuaternion);
 
-            this._raycaster.ray.direction.copy(this._lookAtVector).applyEuler(new THREE.Euler().setFromQuaternion(this._cameraWorldQuaternion, "XYZ"));
+            this._raycaster.ray.direction.copy(this._lookAtVector).applyEuler(new THREE.Euler().setFromQuaternion(xrCamera.quaternion, "XYZ"));
             this._raycaster.ray.origin.copy(xrCamera.position)
 
             let intersects = this._raycaster.intersectObjects(this.buttons);

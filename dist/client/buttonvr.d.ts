@@ -5,7 +5,6 @@ export default class ButtonVR {
     private _texture;
     private _buttons;
     private _raycaster;
-    private _cameraWorldQuaternion;
     private _lookAtVector;
     private _camera;
     private _eventListeners;

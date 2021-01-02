@@ -1,12 +1,13 @@
 //MIT License
 //Copyright (c) 2020 Sean Bradley https://sbcode.net
+//https://github.com/Sean-Bradley/ButtonVR/blob/master/LICENSE
 import * as THREE from '/build/three.module.js';
-//declare let THREE: any
+//import * as THREE from 'three'  //if using a bundler
 export default class ButtonVR {
     constructor(scene, camera, durationMS) {
         this._buttons = new Array();
         this._raycaster = new THREE.Raycaster();
-        this._cameraWorldQuaternion = new THREE.Quaternion();
+        //private _cameraWorldQuaternion = new THREE.Quaternion()
         this._lookAtVector = new THREE.Vector3(0, 0, -1);
         this._eventListeners = new Array();
         this._timer = 0;
@@ -16,7 +17,9 @@ export default class ButtonVR {
         this._buttonPressed = false;
         this._duration = 1.0;
         this._camera = camera;
-        scene.add(camera);
+        if (this._camera.parent === null) {
+            scene.add(camera);
+        }
         if (durationMS) {
             this._duration = durationMS / 1000;
         }
@@ -55,8 +58,8 @@ export default class ButtonVR {
     update(renderer) {
         if (renderer.xr.isPresenting) {
             let xrCamera = renderer.xr.getCamera(this._camera);
-            xrCamera.getWorldQuaternion(this._cameraWorldQuaternion);
-            this._raycaster.ray.direction.copy(this._lookAtVector).applyEuler(new THREE.Euler().setFromQuaternion(this._cameraWorldQuaternion, "XYZ"));
+            //xrCamera.getWorldQuaternion(this._cameraWorldQuaternion);
+            this._raycaster.ray.direction.copy(this._lookAtVector).applyEuler(new THREE.Euler().setFromQuaternion(xrCamera.quaternion, "XYZ"));
             this._raycaster.ray.origin.copy(xrCamera.position);
             let intersects = this._raycaster.intersectObjects(this.buttons);
             this._delta = this._clock.getDelta();
