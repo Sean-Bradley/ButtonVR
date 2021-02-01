@@ -1,6 +1,6 @@
 {
   "name": "buttonvr",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A minimal button for use in VR. Triggered just by looking at it.",
   "main": "./dist/client/buttonvr.js",
   "scripts": {
