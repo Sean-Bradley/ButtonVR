@@ -34,15 +34,17 @@ export default class ButtonVR {
             this._duration = durationMS / 1000
         }
 
-        const lineGeometry1 = new THREE.Geometry()
-        lineGeometry1.vertices.push(new THREE.Vector3(-0.1, 0, 0))
-        lineGeometry1.vertices.push(new THREE.Vector3(0.1, 0, 0))
+        let points = [];
+        points.push(new THREE.Vector3(-0.1, 0, 0))
+        points.push(new THREE.Vector3(0.1, 0, 0))
+        const lineGeometry1 = new THREE.BufferGeometry().setFromPoints( points );
         const lineMesh1 = new THREE.Line(lineGeometry1, new THREE.LineBasicMaterial({ color: 0x8888ff, depthTest: false, depthWrite: false }))
         lineMesh1.position.set(0, 0, -5)
         this._camera.add(lineMesh1)
-        const lineGeometry2 = new THREE.Geometry()
-        lineGeometry2.vertices.push(new THREE.Vector3(0, -0.1, 0))
-        lineGeometry2.vertices.push(new THREE.Vector3(0, 0.1, 0))
+        points = [];        
+        points.push(new THREE.Vector3(0, -0.1, 0))
+        points.push(new THREE.Vector3(0, 0.1, 0))
+        const lineGeometry2 = new THREE.BufferGeometry().setFromPoints( points );
         const lineMesh2 = new THREE.Line(lineGeometry2, new THREE.LineBasicMaterial({ color: 0x8888ff, depthTest: false, depthWrite: false }))
         lineMesh2.position.set(0, 0, -5)
         this._camera.add(lineMesh2)
