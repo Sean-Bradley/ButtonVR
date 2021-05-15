@@ -1,9 +1,11 @@
-//MIT License
-//Copyright (c) 2020 Sean Bradley https://sbcode.net
-//https://github.com/Sean-Bradley/ButtonVR/blob/master/LICENSE
+/**
+ * @license
+ * ButtonVR library and demos
+ * Copyright 2021 Sean Bradley https://sbcode.net
+ * https://github.com/Sean-Bradley/ButtonVR/blob/master/LICENSE
+ */
 
-import * as THREE from '/build/three.module.js'
-//import * as THREE from 'three'  //if using a bundler
+import * as THREE from 'three'
 
 export default class ButtonVR {
 

@@ -20,26 +20,15 @@ Visit http://127.0.0.1:3000/
 
 ## How to import ButtonVR
 
-You can copy the generated `./dist/client/buttonvr.js` directly into your own project folder and import as a module.
-
-``` html
-<script type="module" src="./buttonvr.js"></script>
+```bash
+npm install buttonvr
 ```
 
-or as relative ES6 import
-
-``` javascript
-import ButtonVR from './buttonvr.js'
-```
-
-or if using a bundler such as webpack or rollup
+In your code, import it
 
 ``` javascript
 import ButtonVR from 'buttonvr'
 ```
-
-> Note
-If using a bundler, you will need to update the **import** reference in your copy of `buttonvr.js`. By default it is set to ```import * as THREE from '/build/three.module.js'```. Try setting it to ```import * as THREE from 'three'```
 
 ## Instantiate And Use
 

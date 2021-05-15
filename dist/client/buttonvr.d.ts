@@ -1,4 +1,10 @@
-import * as THREE from '/build/three.module.js';
+/**
+ * @license
+ * ButtonVR library and demos
+ * Copyright 2021 Sean Bradley https://sbcode.net
+ * https://github.com/Sean-Bradley/ButtonVR/blob/master/LICENSE
+ */
+import * as THREE from 'three';
 export default class ButtonVR {
     private _canvas;
     private _ctx;
