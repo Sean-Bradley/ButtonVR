@@ -5,7 +5,12 @@ import ButtonVR from './buttonvr'
 
 const scene: THREE.Scene = new THREE.Scene()
 
-const camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000)
+const camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(
+    50,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+)
 camera.position.set(0, 1.6, 3)
 
 const renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -26,60 +31,62 @@ function onWindowResize() {
 }
 
 const planeGeometry: THREE.PlaneGeometry = new THREE.PlaneGeometry(25, 25, 10, 10)
-const floor: THREE.Mesh = new THREE.Mesh(planeGeometry, new THREE.MeshBasicMaterial({
-    color: 0x008800,
-    wireframe: true
-}))
+const floor: THREE.Mesh = new THREE.Mesh(
+    planeGeometry,
+    new THREE.MeshBasicMaterial({
+        color: 0x008800,
+        wireframe: true,
+    })
+)
 floor.rotateX(-Math.PI / 2)
 scene.add(floor)
 
-
 const buttonVR = new ButtonVR(scene, camera)
-buttonVR.addEventListener("pressedStart", (intersection: THREE.Intersection) => {
-    console.log("pressedStart")
+buttonVR.addEventListener('pressedStart', (intersection: THREE.Intersection) => {
+    console.log('pressedStart')
 })
-buttonVR.addEventListener("pressed", (intersection: THREE.Intersection) => {
-    console.log("pressed")
+buttonVR.addEventListener('pressed', (intersection: THREE.Intersection) => {
+    console.log('pressed')
     statsVR.setCustom1(intersection.object.name)
 })
-buttonVR.addEventListener("pressedEnd", () => {
-    console.log("pressedEnd")
-    statsVR.setCustom1("")
+buttonVR.addEventListener('pressedEnd', () => {
+    console.log('pressedEnd')
+    statsVR.setCustom1('')
 })
 
 const box = new THREE.Mesh(
     new THREE.BoxBufferGeometry(1, 1, 1),
     new THREE.MeshBasicMaterial({
         color: 0xff0066,
-        wireframe: true
+        wireframe: true,
     })
 )
-box.name = "box"
-box.position.set(-2, .5, -4)
+box.name = 'box'
+box.position.set(-2, 0.5, -4)
 scene.add(box)
 buttonVR.buttons.push(box)
 
 const sphere = new THREE.Mesh(
-    new THREE.SphereBufferGeometry(.5, 8, 8),
+    new THREE.SphereBufferGeometry(0.5, 8, 8),
     new THREE.MeshBasicMaterial({
         color: 0x00ff66,
-        wireframe: true
+        wireframe: true,
     })
 )
-sphere.name = "sphere"
-sphere.position.set(0, .5, -4)
+sphere.name = 'sphere'
+sphere.position.set(0, 0.5, -4)
 scene.add(sphere)
 buttonVR.buttons.push(sphere)
 
 const pyramid = new THREE.Mesh(
-    new THREE.ConeBufferGeometry(.66, 1, 4),
+    new THREE.ConeBufferGeometry(0.66, 1, 4),
     new THREE.MeshBasicMaterial({
         color: 0xffff00,
-        wireframe: true
+        wireframe: true,
     })
 )
-pyramid.name = "pyramid"
-pyramid.position.set(2, .5, -4)
+pyramid.name = 'pyramid'
+pyramid.position.set(2, 0.5, -4)
 scene.add(pyramid)
 buttonVR.buttons.push(pyramid)
 
@@ -89,7 +96,6 @@ statsVR.setY(0)
 statsVR.setZ(-2)
 
 function render() {
-
     statsVR.update()
 
     buttonVR.update(renderer)
