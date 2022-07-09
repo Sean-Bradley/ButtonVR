@@ -44,7 +44,13 @@ export default class ButtonVR {
         this._canvas.height = 1;
         this._ctx = this._canvas.getContext('2d');
         this._texture = new THREE.Texture(this._canvas);
-        const material = new THREE.MeshBasicMaterial({ map: this._texture, depthTest: false, depthWrite: false, transparent: true, opacity: 1.0 });
+        const material = new THREE.MeshBasicMaterial({
+            map: this._texture,
+            depthTest: false,
+            depthWrite: false,
+            transparent: true,
+            opacity: 1.0,
+        });
         const geometry = new THREE.PlaneGeometry(1, 0.1, 1, 1);
         this._progress = new THREE.Mesh(geometry, material);
         this._progress.position.x = 0;
@@ -61,33 +67,36 @@ export default class ButtonVR {
     }
     update(renderer) {
         if (renderer.xr.isPresenting) {
-            let xrCamera = renderer.xr.getCamera(this._camera);
+            let xrCamera = renderer.xr.getCamera();
             //xrCamera.getWorldQuaternion(this._cameraWorldQuaternion);
-            this._raycaster.ray.direction.copy(this._lookAtVector).applyEuler(new THREE.Euler().setFromQuaternion(xrCamera.quaternion, "XYZ"));
+            this._raycaster.ray.direction
+                .copy(this._lookAtVector)
+                .applyEuler(new THREE.Euler().setFromQuaternion(xrCamera.quaternion, 'XYZ'));
             this._raycaster.ray.origin.copy(xrCamera.position);
             let intersects = this._raycaster.intersectObjects(this.buttons);
             this._delta = this._clock.getDelta();
             if (intersects.length > 0) {
                 if (this._timer === 0) {
                     this._buttonPressStarted = true;
-                    this.dispatchEvent("pressedStart", intersects[0]);
+                    this.dispatchEvent('pressedStart', intersects[0]);
                 }
                 this._timer += this._delta;
                 this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
                 this._ctx.strokeStyle = 'rgba(255, 255, 255, 1)';
-                const y = Math.floor(this._timer * 100 / this._duration);
+                const y = Math.floor((this._timer * 100) / this._duration);
                 this._ctx.beginPath();
                 this._ctx.moveTo(0, 0);
                 this._ctx.lineTo(y, 0);
                 this._ctx.stroke();
-                if (!this._buttonPressed && this._timer > this._duration) { //1 = 1 second
-                    this.dispatchEvent("pressed", intersects[0]);
+                if (!this._buttonPressed && this._timer > this._duration) {
+                    //1 = 1 second
+                    this.dispatchEvent('pressed', intersects[0]);
                     this._buttonPressed = true;
                 }
             }
             else {
                 if (this._buttonPressStarted) {
-                    this.dispatchEvent("pressedEnd");
+                    this.dispatchEvent('pressedEnd');
                     this._buttonPressed = false;
                     this._buttonPressStarted = false;
                 }

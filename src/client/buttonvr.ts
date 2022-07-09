@@ -86,7 +86,7 @@ export default class ButtonVR {
 
     public update(renderer: THREE.WebGLRenderer) {
         if (renderer.xr.isPresenting) {
-            let xrCamera = renderer.xr.getCamera(this._camera)
+            let xrCamera = renderer.xr.getCamera()
             //xrCamera.getWorldQuaternion(this._cameraWorldQuaternion);
 
             this._raycaster.ray.direction

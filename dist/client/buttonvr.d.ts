@@ -22,8 +22,8 @@ export default class ButtonVR {
     private _buttonPressed;
     private _duration;
     constructor(scene: THREE.Scene, camera: THREE.Camera, durationMS?: number);
-    get buttons(): THREE.Object3D[];
-    set buttons(value: THREE.Object3D[]);
+    get buttons(): THREE.Object3D<THREE.Event>[];
+    set buttons(value: THREE.Object3D<THREE.Event>[]);
     update(renderer: THREE.WebGLRenderer): void;
     addEventListener(type: string, eventHandler: any): void;
     dispatchEvent(type: string, intersection?: THREE.Intersection): void;
