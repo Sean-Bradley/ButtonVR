@@ -62,11 +62,11 @@ const keys = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 let font: Font
 
 const loader = new FontLoader()
-loader.load('fonts/gentilis_regular.typeface.json', function (f) {
+loader.load('fonts/gentilis_regular.typeface.json', function (f:Font) {
     keys.forEach((k, i) => {
         font = f
         const keyCube = new THREE.Mesh(
-            new THREE.BoxBufferGeometry(0.66, 0.66, 0.33),
+            new THREE.BoxGeometry(0.66, 0.66, 0.33),
             new THREE.MeshBasicMaterial({
                 color: 0xff0066,
                 transparent: true,

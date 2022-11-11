@@ -47,7 +47,7 @@ Create your Object3D, give it a name, add it to scene, and add it to the ButtonV
 
 ```javascript
 const box = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(1, 1, 1),
+    new THREE.BoxGeometry(1, 1, 1),
     new THREE.MeshBasicMaterial({
         color: 0xff0066,
         wireframe: true,

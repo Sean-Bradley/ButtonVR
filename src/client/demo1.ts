@@ -55,7 +55,7 @@ buttonVR.addEventListener('pressedEnd', () => {
 })
 
 const box = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(1, 1, 1),
+    new THREE.BoxGeometry(1, 1, 1),
     new THREE.MeshBasicMaterial({
         color: 0xff0066,
         wireframe: true,
@@ -67,7 +67,7 @@ scene.add(box)
 buttonVR.buttons.push(box)
 
 const sphere = new THREE.Mesh(
-    new THREE.SphereBufferGeometry(0.5, 8, 8),
+    new THREE.SphereGeometry(0.5, 8, 8),
     new THREE.MeshBasicMaterial({
         color: 0x00ff66,
         wireframe: true,
@@ -79,7 +79,7 @@ scene.add(sphere)
 buttonVR.buttons.push(sphere)
 
 const pyramid = new THREE.Mesh(
-    new THREE.ConeBufferGeometry(0.66, 1, 4),
+    new THREE.ConeGeometry(0.66, 1, 4),
     new THREE.MeshBasicMaterial({
         color: 0xffff00,
         wireframe: true,
